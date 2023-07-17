@@ -1,0 +1,142 @@
+<!-- Создание компонента  -->
+<!-- ng g c newcomponent --skip-tests -->
+<body>
+<h2>Интерполяция</h2>
+<div>
+  <p>{{ title }}</p>
+  <p>Динамический вывод:</p>
+  <p>числа <strong>{{number}}</strong></p>
+  <p>выражения <strong>{{number - 2}}</strong></p>
+  <p>массива <strong>{{arr}}</strong></p>
+  <p>
+    <span>объекта
+      <strong>{{objInter}}</strong>
+      <strong> {{objInter.a}}</strong>
+      <strong> {{objInter.b.c}}</strong>
+    </span>
+  </p>
+  <p>строки <strong>{{ 'Hello' + ' World' }}</strong></p>
+  <p>изображения</p>
+  <img src="{{img}}" alt="">
+</div>
+<hr>
+<!--==================================================-->
+<h2>Bindings</h2>
+<div>
+  <h3>Односторонний:</h3>
+  <p>Из ts в html</p>
+  <img [src]="img" alt="">
+
+  <p>event binding (из html в ts)</p>
+  <p>передача данныз при вводе</p>
+  <input type="text" (input)="onInput($event)">
+
+  <p>обработка нажатия на кнопку (см в консоль)</p>
+  <button (click)="onClick()" class="btn-dark">Click me!</button>
+
+  <p>передача данных при нажатии на enter или</p>
+  <p>снятии фокуса с поля</p>
+  <input
+    type="text"
+    (keyup.enter)="onInput($event)"
+    (blur)="onBlur(myInput.value)"
+    #myInput
+  >
+  <!-- #myInput локальная ссылка-->
+  <p><strong>{{inputValue}}</strong></p>
+
+  <h3>2 way binding:</h3>
+  <input type="text" [(ngModel)]="title">
+  <p>{{title}}</p>
+</div>
+<hr>
+<!--==================================================-->
+<h2>Директива ngStyle</h2>
+<div>
+  <button (click) = "toggle = !toggle" class="btn-dark">Toggle</button>
+  <div [ngStyle]="{
+      width: '200px',
+      height: '200px',
+      borderRadius: '10px',
+      border: '5px solid #ccc',
+      background: toggle ? 'blue' : 'green'
+      }">
+  </div>
+</div>
+<hr>
+<!--==================================================-->
+<h2>Динамические классы ngClass</h2>
+<div>
+  <button (click) = "toggle = !toggle" class="btn-dark">Toggle</button>
+
+  <p>Добавление классов 1 способ если много условий и классов</p>
+  <p [ngClass]="{
+    blue: toggle,
+    green: !toggle
+    }">Lorem ipsum dolor sit amet.</p>
+
+  <p>Добавление классов 2 способ</p>
+  <p
+    [class.blue]="toggle"
+    [class.green]="!toggle"
+  >Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+</div>
+<hr>
+<!--==================================================-->
+<h2>Структурные директивы</h2>
+<p>Позволяют изменять структуру html шаблона</p>
+<div>
+  <h3>ngIF</h3>
+  <div>
+    <button (click)="toggle = !toggle" class="btn-dark">toggle</button>
+    <p *ngIf="toggle; else greenP" class="blue">Lorem ipsum dolor sit amet.</p>
+    <ng-template #greenP>
+      <p class="green">Lorem ipsum.</p>
+    </ng-template>
+  </div>
+
+  <h3>ngSwitch</h3>
+  <button (click)="toggle = !toggle" class="btn-dark">toggle true/false</button>
+  <button (click)="toggle = 111" class="btn-dark">set 111</button>
+  <p>toggle = {{toggle}}</p>
+  <div [ngSwitch]="toggle">
+    <p *ngSwitchCase="true" class="blue">Lorem ipsum dolor.</p>
+    <p *ngSwitchCase="false" class="green">Lorem ipsum dolor sit amet, consectetur.</p>
+    <p *ngSwitchDefault>Lorem ipsum.</p>
+  </div>
+
+  <h3>ngFor</h3>
+  <div>
+    <p>Вывод массива</p>
+    <ul>
+      <li *ngFor="let n of array; let idx = index">
+        {{idx+1}} <strong>{{n}}</strong></li>
+    </ul>
+  </div>
+  <div>
+    <p>Вывод объектов</p>
+    <ul>
+      <li *ngFor="let post of objs">
+        <p>{{post.title}} <b>{{post.author}}</b></p>
+        <ul>
+          <li *ngFor="let comment of post.comments">
+            <div>
+              <small>{{comment.name}}</small>
+              <p>{{comment.text}}</p>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+<hr>
+<!--==================================================-->
+<h2>Pipes</h2>
+<div>
+  <p>{{now}}</p>
+  <p>{{now | date}}</p>
+  <p>{{now | date: 'small'}}</p>
+  <p>{{now | date: 'long'| uppercase}}</p>
+</div>
+</body>
