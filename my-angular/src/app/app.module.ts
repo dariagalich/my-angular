@@ -8,7 +8,9 @@ import {HeaderComponent} from "./components/header/header.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BasicsComponent } from './basics/basics.component';
 import {FormsModule} from "@angular/forms";
-import { ComponentDetalesComponent } from './component-detales/component-detales.component';
+import { ComponentDetailComponent } from './component-detail/component-detail.component';
+import {PostFormComponent} from "./components/post-form/post-form.component";
+import {PostComponent} from "./components/post/post.component";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ComponentDetalesComponent } from './component-detales/component-detales
     BaseTypescriptComponent,
     HeaderComponent,
     BasicsComponent,
-    ComponentDetalesComponent
+    ComponentDetailComponent,
+    PostFormComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

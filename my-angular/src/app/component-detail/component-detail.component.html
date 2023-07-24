@@ -1,0 +1,13 @@
+<body>
+  <h2>Компоненты в деталях</h2>
+
+  <p>Вывод из компонента post-form</p>
+  <app-post-form></app-post-form>
+  <hr />
+
+  <p>Вывод из компонента post</p>
+  <app-post
+  *ngFor="let p of posts"
+  [myPost]="p"
+  ></app-post>
+</body>
