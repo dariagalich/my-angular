@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
+import {Post} from "../../component-detail/component-detail.component";
 
 @Component({
   selector: 'app-post-form',
@@ -7,4 +8,20 @@ import { Component } from '@angular/core';
 })
 export class PostFormComponent {
 
+  @Output() onAdd: EventEmitter<Post> = new EventEmitter<Post>()
+
+  title = ''
+  text = ''
+
+  addPost(){
+    if (this.text.trim() && this.title.trim()){
+      const post: Post = {
+        title: this.title,
+        text: this.text
+      }
+      this.onAdd.emit(post) // отправление данных
+      console.log('New Post: ', post) //  вывод в консоль
+      this.title = this.text = '' // очищение полей
+    }
+  }
 }

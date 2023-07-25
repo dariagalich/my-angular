@@ -18,4 +18,9 @@ export class ComponentDetailComponent {
     {title: 'Заголовок 1', text: "Текст 1", id: 1},
     {title: 'Заголовок 2', text: "Текст 2", id: 2}
   ]
+
+  updatePosts(post: Post){
+    this.posts.unshift(post)
+    console.log('Post ', post)
+  }
 }

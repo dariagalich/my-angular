@@ -2,7 +2,9 @@
   <h2>Компоненты в деталях</h2>
 
   <p>Вывод из компонента post-form</p>
-  <app-post-form></app-post-form>
+  <app-post-form
+    (onAdd)="updatePosts($event)"
+  ></app-post-form>
   <hr />
 
   <p>Вывод из компонента post</p>
