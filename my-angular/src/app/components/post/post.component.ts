@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, ContentChild, ElementRef, Input} from '@angular/core';
 import {Post} from "../../component-detail/component-detail.component";
 
 @Component({
@@ -9,5 +9,10 @@ import {Post} from "../../component-detail/component-detail.component";
 export class PostComponent {
 
   @Input() myPost!: Post
+  @ContentChild('info', {static: true}) infoRef!: ElementRef
+
+  ngOnInit(){
+    console.log(this.infoRef.nativeElement)
+  }
 
 }

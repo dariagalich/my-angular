@@ -8,8 +8,17 @@
   <hr />
 
   <p>Вывод из компонента post</p>
+
   <app-post
   *ngFor="let p of posts"
   [myPost]="p"
-  ></app-post>
+  >
+    <div #info>
+      <small *ngIf="p.text.length > 10; else short">Пост длинный</small>
+      <ng-template #short>
+        <small>Пост короткий</small>
+      </ng-template>
+    </div>
+
+  </app-post>
 </body>
