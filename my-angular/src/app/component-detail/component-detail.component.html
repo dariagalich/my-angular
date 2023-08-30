@@ -1,19 +1,22 @@
 <body>
   <h2>Компоненты в деталях</h2>
+<!--  Добавление элемента в начало списка (обновление списка)-->
+  <p>Вывод из компонента post-form.component.ts</p>
 
-  <p>Вывод из компонента post-form</p>
   <app-post-form
     (onAdd)="updatePosts($event)"
   ></app-post-form>
   <hr />
 
-  <p>Вывод из компонента post</p>
+  <p>Вывод из компонента post.component.ts</p>
 
   <app-post
   *ngFor="let p of posts"
   [myPost]="p"
+  (onRemove)="removePost($event)"
   >
     <div #info>
+      <!--  предоставление доступа к элементу div по якорю #info(см post.compoment.ts)-->
       <small *ngIf="p.text.length > 10; else short">Пост длинный</small>
       <ng-template #short>
         <small>Пост короткий</small>
@@ -21,4 +24,11 @@
     </div>
 
   </app-post>
+
+  <h3>Жизненный цикл lifecycle hooks</h3>
+  <a href="https://angular.io/guide/lifecycle-hooks"
+  >Подробнее о работе hooks см тут</a
+  >
+  <p>Побробнее о моментах работы Hooks см в консоль и в post.component.ts</p>
+
 </body>

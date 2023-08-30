@@ -23,4 +23,8 @@ export class ComponentDetailComponent {
     this.posts.unshift(post)
     console.log('Post ', post)
   }
+
+  removePost(id:number){
+    this.posts = this.posts.filter(p => p.id !== id)
+  }
 }

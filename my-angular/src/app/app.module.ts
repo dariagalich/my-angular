@@ -11,6 +11,7 @@ import {FormsModule} from "@angular/forms";
 import { ComponentDetailComponent } from './component-detail/component-detail.component';
 import {PostFormComponent} from "./components/post-form/post-form.component";
 import {PostComponent} from "./components/post/post.component";
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {PostComponent} from "./components/post/post.component";
     BasicsComponent,
     ComponentDetailComponent,
     PostFormComponent,
-    PostComponent
+    PostComponent,
+    RxjsComponent
   ],
   imports: [
     BrowserModule,
